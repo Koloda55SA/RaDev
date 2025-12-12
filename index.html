@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FreeDip - Профессиональная разработка дипломов, сайтов и приложений. 400+ успешных проектов. Быстро, качественно, недорого.">
+  <meta name="keywords" content="диплом, разработка, программирование, Python, Java, JavaScript, React, GoLang">
+  <meta name="author" content="Murka (FreeDip)">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="FreeDip - Профессиональная разработка">
+  <meta property="og:description" content="400+ успешных проектов. Дипломы, сайты, приложения. Быстро, качественно, недорого.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/og-image.jpg">
+  <meta property="og:url" content="https://freedip.vercel.app">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FreeDip - Профессиональная разработка">
+  <meta name="twitter:description" content="400+ успешных проектов. Дипломы, сайты, приложения.">
+  <meta name="twitter:image" content="/og-image.jpg">
+  
+  <title>FreeDip - Профессиональная разработка дипломов и приложений</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Loading Screen -->
+    <div id="loader" class="loader">
+      <div class="loader-content">
+        <div class="neon-text">FreeDip</div>
+        <div class="loader-bar">
+          <div class="loader-progress"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-logo">FreeDip</div>
+      <div class="nav-links">
+        <a href="#home" data-section="home" data-i18n="nav.home">Главная</a>
+        <a href="#about" data-section="about" data-i18n="nav.about">Обо мне</a>
+        <a href="#services" data-section="services" data-i18n="nav.services">Услуги</a>
+        <a href="#portfolio" data-section="portfolio" data-i18n="nav.portfolio">Портфолио</a>
+        <a href="#reviews" data-section="reviews" data-i18n="nav.reviews">Отзывы</a>
+        <a href="#pricing" data-section="pricing" data-i18n="nav.pricing">Цены</a>
+        <a href="#contact" data-section="contact" data-i18n="nav.contact">Контакты</a>
+      </div>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="ky">KY</button>
+      </div>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+      <!-- Section 1: Home with 3D Scenes -->
+      <section id="home" class="section section-home">
+        <div id="canvas-container"></div>
+        <!-- Video backgrounds -->
+        <video id="video-scene-1" class="scene-video" autoplay muted loop playsinline>
+          <source src="/123.mp4" type="video/mp4">
+        </video>
+        <video id="video-scene-2" class="scene-video" autoplay muted loop playsinline>
+          <source src="/1234.mp4" type="video/mp4">
+        </video>
+        <div class="scene-overlay">
+          <div class="scene-indicator">
+            <span class="scene-number">01</span>
+            <span class="scene-title" data-i18n="home.scene1">Python Диплом</span>
+          </div>
+          <div class="scene-info" id="scene-info">
+            <h3 class="scene-info-title">Python Дипломная Работа</h3>
+            <p class="scene-info-text">Полноценные дипломные проекты на Python с документацией, исходным кодом и презентацией</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: About -->
+      <section id="about" class="section section-about">
+        <div class="container">
+          <h2 class="section-title" data-i18n="about.title">Моя история</h2>
+          <div class="about-content">
+            <div class="about-text">
+              <p class="lead"><span data-i18n="about.text1">Родился 18 июля 2005 года. Никнейм —</span> <strong data-i18n="about.text2">Murka</strong>.</p>
+              <p><span data-i18n="about.text3">С 14 лет пишу код, с 16 делаю дипломы, сайты и приложения за студентов. За 3 года закрыл</span> <strong data-i18n="about.text4">400+ заказов</strong>. <span data-i18n="about.text5">Делаю быстро, качественно и недорого.</span></p>
+              <div class="stats">
+                <div class="stat-item">
+                  <div class="stat-number">400+</div>
+                  <div class="stat-label" data-i18n="about.stats.projects">Проектов</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">3</div>
+                  <div class="stat-label" data-i18n="about.stats.years">Года опыта</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">100%</div>
+                  <div class="stat-label" data-i18n="about.stats.quality">Качество</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Services -->
+      <section id="services" class="section section-services">
+        <div class="container">
+          <h2 class="section-title" data-i18n="services.title">Услуги</h2>
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-icon">🐍</div>
+              <h3 data-i18n="services.python.title">Python Дипломы</h3>
+              <p data-i18n="services.python.desc">Полноценные дипломные работы на Python с документацией и исходным кодом</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">☕</div>
+              <h3 data-i18n="services.java.title">Java Spring Boot</h3>
+              <p data-i18n="services.java.desc">Backend разработка на Java Spring Boot с REST API и базой данных</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">⚛️</div>
+              <h3 data-i18n="services.react.title">React + Tailwind</h3>
+              <p data-i18n="services.react.desc">Современные веб-приложения на React с красивым дизайном</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">🚀</div>
+              <h3 data-i18n="services.golang.title">GoLang Микросервисы</h3>
+              <p data-i18n="services.golang.desc">Высокопроизводительные микросервисы на Go</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">📱</div>
+              <h3 data-i18n="services.mobile.title">Мобильные Приложения</h3>
+              <p data-i18n="services.mobile.desc">Разработка мобильных приложений для iOS и Android</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">💻</div>
+              <h3 data-i18n="services.web.title">Веб-Разработка</h3>
+              <p data-i18n="services.web.desc">Современные сайты и веб-приложения любой сложности</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Portfolio -->
+      <section id="portfolio" class="section section-portfolio">
+        <div class="container">
+          <h2 class="section-title" data-i18n="portfolio.title">Примеры работ</h2>
+          <p class="portfolio-note" data-i18n="portfolioNote">Это портфолио демонстрирует примеры моих работ. Все проекты выполнены профессионально и сданы клиентам.</p>
+          <div id="portfolio-grid" class="portfolio-grid">
+            <!-- Projects will be loaded from Firestore -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Reviews -->
+      <section id="reviews" class="section section-reviews">
+        <div class="container">
+          <h2 class="section-title" data-i18n="reviews.title">Отзывы студентов</h2>
+          <div id="reviews-grid" class="reviews-grid">
+            <!-- Reviews will be loaded from Firestore -->
+          </div>
+          <div class="review-form-container">
+            <h3 data-i18n="reviews.formTitle">Оставить отзыв</h3>
+            <form id="review-form" class="review-form">
+              <input type="text" id="review-name" data-i18n-placeholder="reviews.namePlaceholder" placeholder="Ваше имя" required>
+              <textarea id="review-text" data-i18n-placeholder="reviews.textPlaceholder" placeholder="Ваш отзыв" required></textarea>
+              <button type="submit" class="btn-primary" data-i18n="reviews.submit">Отправить</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Pricing -->
+      <section id="pricing" class="section section-pricing">
+        <div class="container">
+          <h2 class="section-title" data-i18n="pricing.title">Цены и тарифы</h2>
+          <div id="pricing-grid" class="pricing-grid">
+            <!-- Pricing will be loaded from Firestore -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: Contact -->
+      <section id="contact" class="section section-contact">
+        <div class="container">
+          <h2 class="section-title" data-i18n="contact.title">Контакты</h2>
+          <div class="contact-content">
+            <div class="contact-info">
+              <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <div>
+                  <h3 data-i18n="contact.telegram">Telegram</h3>
+                  <a href="https://t.me/murka_dev" target="_blank" rel="noopener">@murka_dev</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">💬</div>
+                <div>
+                  <h3 data-i18n="contact.whatsapp">WhatsApp</h3>
+                  <a href="https://wa.me/79000000000" target="_blank" rel="noopener" data-i18n="contact.whatsappText">Написать в WhatsApp</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div>
+                  <h3 data-i18n="contact.email">Email</h3>
+                  <a href="mailto:contact@freedip.dev">contact@freedip.dev</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 FreeDip. <span data-i18n="footer.rights">Все права защищены.</span></p>
+        <p><span data-i18n="footer.made">Разработано</span> <strong>Murka</strong></p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Admin Panel Modal -->
+  <div id="admin-modal" class="admin-modal">
+    <div class="admin-modal-content">
+      <span class="admin-close">&times;</span>
+      <h2>Вход в админ-панель</h2>
+      <form id="admin-login-form">
+        <input type="email" id="admin-email" placeholder="Email" required>
+        <input type="password" id="admin-password" placeholder="Пароль" required>
+        <button type="submit" class="btn-primary">Войти</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
+

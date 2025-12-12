@@ -1,0 +1,1049 @@
+# 🚀 FreeDip - Образовательная платформа для программирования
+
+**FreeDip** - это полнофункциональная образовательная платформа для изучения программирования с бесплатными курсами, социальными функциями, глобальным чатом, IDE для выполнения кода и системой достижений.
+
+## 📋 Содержание
+
+- [Описание проекта](#описание-проекта)
+- [Основные функции](#основные-функции)
+- [Технологический стек](#технологический-стек)
+- [Архитектура системы](#архитектура-системы)
+- [Аутентификация](#аутентификация)
+- [База данных](#база-данных)
+- [VPS и Docker](#vps-и-docker)
+- [API Endpoints](#api-endpoints)
+- [Установка и запуск](#установка-и-запуск)
+- [Деплой](#деплой)
+
+---
+
+## 🎯 Описание проекта
+
+FreeDip - это современная образовательная платформа, которая предоставляет:
+
+- **Бесплатные курсы программирования** по 5+ языкам (Python, JavaScript, Java, C++, C# и др.)
+- **Интерактивный IDE** для написания и выполнения кода прямо в браузере
+- **Социальную сеть** с профилями пользователей, подписками, лайками
+- **Глобальный чат** с шифрованием сообщений
+- **Систему достижений** и прогресса обучения
+- **Блог** с техническими статьями
+- **Портфолио проектов** команды разработчиков
+
+---
+
+## ✨ Основные функции
+
+### 📚 Образовательные функции
+
+- **Курсы программирования**
+  - Python, JavaScript, Java, C++, C#, Go, Rust, PHP, Ruby, Swift, Kotlin
+  - Структурированные курсы с главами и уроками
+  - Теория, практика, тесты
+  - Отслеживание прогресса обучения
+  - Валидация решений задач
+
+- **IDE (Интегрированная среда разработки)**
+  - Поддержка 15+ языков программирования
+  - Выполнение кода через Piston API
+  - Сохранение файлов локально
+  - Подсветка синтаксиса (CodeMirror)
+  - Темная тема оформления
+
+- **Система прогресса**
+  - Отслеживание пройденных уроков
+  - Сохранение решений задач
+  - Статистика обучения
+
+### 👥 Социальные функции
+
+- **Профили пользователей**
+  - Кастомные аватары (загрузка фото)
+  - Никнеймы и биография
+  - Система достижений
+  - Статистика активности
+
+- **Подписки и лайки**
+  - Подписка на пользователей
+  - Лайки профилей
+  - Счетчики подписчиков/подписок
+
+- **Поиск пользователей**
+  - Поиск по никнейму, email, имени
+  - История поиска
+  - Автодополнение
+
+- **Глобальный чат**
+  - Публичные сообщения для всех пользователей
+  - Приватные сообщения между пользователями
+  - Поддержка текста, изображений, файлов, кода
+  - Шифрование сообщений
+  - Проверка файлов на вирусы
+
+### 📝 Контент
+
+- **Блог**
+  - Технические статьи
+  - Категории и теги
+  - Комментарии
+  - Просмотры и лайки
+
+- **Портфолио проектов**
+  - Кейсы команды разработчиков
+  - Фильтры по технологиям, типу, автору
+  - Детальные страницы проектов
+
+- **Отзывы клиентов**
+  - Отзывы с фото
+  - Рейтинги проектов
+
+### 🛠️ Административные функции
+
+- **Админ-панель** (`/admin`)
+  - Управление проектами (CRUD)
+  - Управление блогом
+  - Управление заявками от клиентов
+  - Управление отзывами
+  - Просмотр чатов пользователей
+  - Статистика системы
+  - Встроенный IDE для админов
+
+### 🎨 UI/UX функции
+
+- **Мультиязычность**
+  - Русский (по умолчанию)
+  - Кыргызский
+  - i18next для переводов
+
+- **Темная тема**
+  - Киберпанк дизайн
+  - Неоновые эффекты
+  - Адаптивный дизайн
+
+- **PWA (Progressive Web App)**
+  - Установка как приложение
+  - Service Worker для офлайн работы
+  - Кэширование ресурсов
+
+- **ИИ-ассистент**
+  - Чат-бот в правом нижнем углу
+  - Ответы на вопросы о проекте
+  - Интеграция с OpenAI API
+
+---
+
+## 🛠️ Технологический стек
+
+### Frontend
+
+- **Framework**: Next.js 14 (App Router)
+- **Язык**: TypeScript
+- **UI библиотеки**:
+  - React 18
+  - Tailwind CSS
+  - Shadcn/ui компоненты
+  - Framer Motion (анимации)
+  - Lucide React (иконки)
+
+- **3D графика**:
+  - Three.js
+  - React Three Fiber
+  - @react-three/drei
+
+- **Редактор кода**:
+  - CodeMirror (@uiw/react-codemirror)
+  - Поддержка множества языков
+
+- **Состояние**:
+  - React Query (@tanstack/react-query)
+  - Zustand (для некоторых компонентов)
+
+- **Локализация**:
+  - i18next
+  - i18next-browser-languagedetector
+
+- **Другие библиотеки**:
+  - react-hot-toast (уведомления)
+  - @studio-freight/lenis (плавная прокрутка)
+  - html2canvas, jspdf (экспорт)
+
+### Backend (C# .NET)
+
+- **Framework**: ASP.NET Core 8.0
+- **ORM**: Entity Framework Core
+- **База данных**: PostgreSQL 16
+- **Аутентификация**: JWT Bearer Tokens
+- **API**: RESTful API
+
+**Основные пакеты NuGet**:
+- `Microsoft.EntityFrameworkCore` 8.0.0
+- `Npgsql.EntityFrameworkCore.PostgreSQL` 8.0.0
+- `Microsoft.AspNetCore.Authentication.JwtBearer` 8.0.0
+- `BCrypt.Net-Next` 4.0.3
+- `Google.Apis.Auth` 1.68.0
+- `System.IdentityModel.Tokens.Jwt` 7.0.3
+
+### Инфраструктура
+
+- **VPS**: Ubuntu Server
+- **Контейнеризация**: Docker + Docker Compose
+- **Веб-сервер**: NGINX (прокси, статические файлы)
+- **Хостинг фронтенда**: Vercel
+- **База данных**: PostgreSQL 16 (в Docker)
+
+### Внешние сервисы
+
+- **Firebase**:
+  - Authentication (резервная аутентификация)
+  - Firestore (для некоторых данных)
+  - Storage (для файлов)
+
+- **Google OAuth 2.0**:
+  - Вход через Google аккаунт
+  - Интеграция с C# бэкендом
+
+- **Piston API**:
+  - Выполнение кода в IDE
+  - Поддержка множества языков
+
+- **OpenAI API**:
+  - ИИ-ассистент чат-бот
+  - GPT-4o-mini модель
+
+---
+
+## 🏗️ Архитектура системы
+
+### Общая схема
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Vercel (Frontend)                        │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  Next.js 14 App (HTTPS)                              │  │
+│  │  - React Components                                   │  │
+│  │  - API Routes (/api/backend/*)                        │  │
+│  │  - Static Files                                       │  │
+│  └──────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+                            │
+                            │ HTTPS
+                            │ (через Next.js API proxy)
+                            ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    VPS (213.199.56.27)                      │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  NGINX (Port 80/443)                                  │  │
+│  │  - Проксирование API запросов                         │  │
+│  │  - Статические файлы (uploads)                        │  │
+│  └──────────────────────────────────────────────────────┘  │
+│                            │                                │
+│                            ▼                                │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  Docker Compose                                        │  │
+│  │  ┌────────────────────────────────────────────────┐   │  │
+│  │  │  C# API (freedip-api)                          │   │  │
+│  │  │  - ASP.NET Core 8.0                            │   │  │
+│  │  │  - Port: 8080 (внутри) → 5000 (снаружи)        │   │  │
+│  │  │  - JWT Authentication                           │   │  │
+│  │  └────────────────────────────────────────────────┘   │  │
+│  │                            │                           │  │
+│  │                            ▼                           │  │
+│  │  ┌────────────────────────────────────────────────┐   │  │
+│  │  │  PostgreSQL (freedip-postgres)                  │   │  │
+│  │  │  - Port: 5432                                    │   │  │
+│  │  │  - Database: freedip                             │   │  │
+│  │  └────────────────────────────────────────────────┘   │  │
+│  └──────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Поток данных
+
+1. **Пользователь** → Vercel (HTTPS)
+2. **Vercel** → Next.js API Route `/api/backend/*` (HTTPS)
+3. **Next.js API Route** → VPS C# API `http://213.199.56.27:5000/api/*` (HTTP, прокси)
+4. **C# API** → PostgreSQL (внутри Docker сети)
+
+### Почему прокси?
+
+- **Mixed Content**: Vercel использует HTTPS, а VPS API на HTTP
+- Браузеры блокируют HTTP запросы с HTTPS страниц
+- Решение: Next.js API routes проксируют запросы через HTTPS
+
+---
+
+## 🔐 Аутентификация
+
+### Гибридная система аутентификации
+
+Проект использует **гибридный подход**:
+
+1. **Основная аутентификация**: C# Backend (JWT токены)
+2. **Резервная**: Firebase Authentication (для совместимости)
+
+### Google OAuth 2.0 Flow
+
+```
+1. Пользователь нажимает "Войти через Google"
+   ↓
+2. Редирект на Google OAuth
+   ↓
+3. Google возвращает authorization code
+   ↓
+4. Next.js API Route (/api/auth/google-callback)
+   - Обменивает code на access_token
+   - Получает данные пользователя от Google
+   ↓
+5. Отправка данных в C# API (/api/auth/google)
+   ↓
+6. C# API:
+   - Создает/находит пользователя в БД
+   - Генерирует JWT токен
+   - Возвращает токен и данные пользователя
+   ↓
+7. Сохранение в localStorage:
+   - auth_token (JWT)
+   - auth_user (данные пользователя)
+   ↓
+8. Редирект на главную страницу
+```
+
+### JWT Token Structure
+
+```json
+{
+  "sub": "user-guid",
+  "email": "user@example.com",
+  "role": "user",
+  "iss": "FreeDip",
+  "aud": "FreeDipUsers",
+  "exp": 1234567890
+}
+```
+
+### Защита эндпоинтов
+
+- `[Authorize]` атрибут на контроллерах
+- Проверка JWT токена в каждом запросе
+- Токен передается в заголовке: `Authorization: Bearer <token>`
+
+---
+
+## 🗄️ База данных
+
+### PostgreSQL 16
+
+**Расположение**: Docker контейнер `freedip-postgres`  
+**Порт**: 5432  
+**База данных**: `freedip`  
+**Пользователь**: `postgres`
+
+### Таблицы
+
+#### 1. **Users** - Пользователи
+```sql
+- Id (UUID, PK)
+- Email (TEXT, UNIQUE)
+- Username (TEXT, UNIQUE)
+- PasswordHash (TEXT)
+- DisplayName (TEXT)
+- AvatarUrl (TEXT)
+- CreatedAt (TIMESTAMP)
+- UpdatedAt (TIMESTAMP)
+- IsEmailVerified (BOOLEAN)
+- Role (TEXT) - 'user' или 'admin'
+- GoogleId (TEXT)
+- Provider (TEXT) - 'email' или 'google'
+```
+
+#### 2. **UserProfiles** - Расширенные профили
+```sql
+- user_id (UUID, PK, FK → Users.Id)
+- nickname (TEXT)
+- bio (TEXT)
+- avatar_url (TEXT)
+- selected_achievements (JSONB)
+- updated_at (TIMESTAMP)
+```
+
+#### 3. **Courses** - Курсы
+```sql
+- Id (UUID, PK)
+- Title (TEXT)
+- Description (TEXT)
+- Language (TEXT) - 'python', 'javascript', etc.
+- Level (TEXT) - 'beginner', 'intermediate', 'advanced'
+- CreatedAt (TIMESTAMP)
+```
+
+#### 4. **Chapters** - Главы курсов
+```sql
+- Id (UUID, PK)
+- CourseId (UUID, FK → Courses.Id)
+- Title (TEXT)
+- Order (INTEGER)
+- Description (TEXT)
+```
+
+#### 5. **Lessons** - Уроки
+```sql
+- Id (UUID, PK)
+- ChapterId (UUID, FK → Chapters.Id)
+- Title (TEXT)
+- Content (TEXT)
+- Order (INTEGER)
+- Type (TEXT) - 'theory', 'practice', 'test'
+```
+
+#### 6. **UserProgress** - Прогресс обучения
+```sql
+- Id (UUID, PK)
+- UserId (UUID, FK → Users.Id)
+- LessonId (UUID, FK → Lessons.Id)
+- CompletedAt (TIMESTAMP)
+- Solution (TEXT)
+- UNIQUE(UserId, LessonId)
+```
+
+#### 7. **Messages** - Сообщения чата
+```sql
+- id (UUID, PK)
+- sender_id (UUID, FK → Users.Id)
+- receiver_id (UUID, FK → Users.Id, NULL для глобального чата)
+- content (TEXT) - незашифрованный
+- encrypted_content (TEXT) - зашифрованный
+- image_url (TEXT)
+- file_url (TEXT)
+- file_hash (TEXT)
+- message_type (TEXT) - 'text', 'image', 'code', 'file'
+- is_scanned (BOOLEAN)
+- created_at (TIMESTAMP)
+- is_deleted (BOOLEAN)
+```
+
+#### 8. **Subscriptions** - Подписки
+```sql
+- id (UUID, PK)
+- follower_id (UUID, FK → Users.Id)
+- following_id (UUID, FK → Users.Id)
+- created_at (TIMESTAMP)
+- UNIQUE(follower_id, following_id)
+```
+
+#### 9. **Likes** - Лайки
+```sql
+- Id (UUID, PK)
+- UserId (UUID, FK → Users.Id)
+- TargetId (UUID)
+- TargetType (TEXT) - 'profile', 'message', 'post'
+- CreatedAt (TIMESTAMP)
+- UNIQUE(UserId, TargetId, TargetType)
+```
+
+#### 10. **SearchHistories** - История поиска
+```sql
+- Id (UUID, PK)
+- UserId (UUID, FK → Users.Id)
+- Query (TEXT)
+- SearchedAt (TIMESTAMP)
+```
+
+#### 11. **Projects** - Проекты портфолио
+```sql
+- id (UUID, PK)
+- title (TEXT)
+- description (TEXT)
+- image (TEXT)
+- technologies (TEXT[])
+- author (TEXT)
+- type (TEXT)
+- year (INTEGER)
+- github (TEXT)
+- demo (TEXT)
+- created_at (TIMESTAMP)
+```
+
+#### 12. **BlogPosts** - Статьи блога
+```sql
+- id (UUID, PK)
+- title (TEXT)
+- excerpt (TEXT)
+- content (TEXT)
+- author (TEXT)
+- category (TEXT)
+- tags (TEXT[])
+- read_time (TEXT)
+- views (INTEGER)
+- created_at (TIMESTAMP)
+```
+
+#### 13. **Reviews** - Отзывы
+```sql
+- id (UUID, PK)
+- author (TEXT)
+- project (TEXT)
+- rating (INTEGER)
+- text (TEXT)
+- photo_url (TEXT)
+- email (TEXT)
+- created_at (TIMESTAMP)
+```
+
+#### 14. **ProjectRequests** - Заявки от клиентов
+```sql
+- id (UUID, PK)
+- name (TEXT)
+- email (TEXT)
+- message (TEXT)
+- telegram (TEXT)
+- budget (TEXT)
+- deadline (TEXT)
+- status (TEXT) - 'new', 'pending', 'accepted', 'rejected'
+- accepted_by (UUID, FK → Users.Id)
+- created_at (TIMESTAMP)
+```
+
+#### 15. **EmailSubscriptions** - Подписки на email
+```sql
+- id (UUID, PK)
+- email (TEXT, UNIQUE)
+- subscribed_at (TIMESTAMP)
+```
+
+#### 16. **PromoCodes** - Промокоды
+```sql
+- id (UUID, PK)
+- code (TEXT, UNIQUE)
+- discount (INTEGER)
+- expires_at (TIMESTAMP)
+- used_count (INTEGER)
+```
+
+#### 17. **ChatHistory** - История чатов (legacy)
+```sql
+- Используется для совместимости
+```
+
+#### 18. **uid_mapping** - Маппинг UID (legacy)
+```sql
+- Для миграции с Firebase
+```
+
+### Связи между таблицами
+
+- `Users` ← `UserProfiles` (1:1)
+- `Users` ← `UserProgress` (1:N)
+- `Users` ← `Messages` (1:N, как sender и receiver)
+- `Users` ← `Subscriptions` (1:N, как follower и following)
+- `Courses` → `Chapters` (1:N)
+- `Chapters` → `Lessons` (1:N)
+- `Lessons` ← `UserProgress` (1:N)
+
+---
+
+## 🖥️ VPS и Docker
+
+### VPS сервер
+
+- **IP**: 213.199.56.27
+- **ОС**: Ubuntu Server
+- **Расположение**: `/opt/freedip-backend/backend/`
+
+### Docker Compose конфигурация
+
+**Файл**: `/opt/freedip-backend/backend/docker-compose.yml`
+
+```yaml
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: freedip-postgres
+    environment:
+      POSTGRES_DB: freedip
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: <из .env>
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: FreeDip.Api/Dockerfile
+    container_name: freedip-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=freedip;...
+      - Jwt__Secret=<из .env>
+      - Jwt__Issuer=FreeDip
+      - Jwt__Audience=FreeDipUsers
+    env_file:
+      - .env
+    ports:
+      - "5000:8080"  # Внешний:Внутренний
+      - "5001:8081"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+```
+
+### Порты
+
+- **5000** → C# API (HTTP)
+- **5432** → PostgreSQL
+- **80/443** → NGINX
+- **2358** → Judge0 (для выполнения кода, опционально)
+
+### Firewall (UFW)
+
+Открытые порты:
+- 22 (SSH)
+- 80 (HTTP)
+- 443 (HTTPS)
+- 5000 (C# API)
+- 2358 (Judge0)
+- 9000-9001 (MinIO)
+
+### NGINX конфигурация
+
+**Контейнер**: `nginx-proxy`  
+**Конфиг**: `/etc/nginx/conf.d/freedip-api.conf`
+
+```nginx
+server {
+    listen 80;
+    server_name 213.199.56.27;
+
+    client_max_body_size 50M;
+
+    location /api/ {
+        proxy_pass http://freedip-api:8080/api/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    location /uploads/ {
+        proxy_pass http://freedip-api:8080/uploads/;
+        proxy_set_header Host $host;
+    }
+}
+```
+
+### Переменные окружения (.env)
+
+**На VPS**: `/opt/freedip-backend/backend/.env`
+
+```env
+POSTGRES_DB=freedip
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=<password>
+
+JWT_SECRET=<32+ символов>
+
+Google__ClientId=<из Google Console>
+Google__ClientSecret=<из Google Console>
+
+Email__SmtpHost=smtp.gmail.com
+Email__SmtpPort=587
+Email__SmtpUser=<email>
+Email__SmtpPassword=<password>
+Email__FromEmail=<email>
+```
+
+**На Vercel**: Environment Variables
+
+```env
+NEXT_PUBLIC_API_URL=http://213.199.56.27:5000/api
+OPENAI_API_KEY=<для ИИ-ассистента>
+```
+
+---
+
+## 🔌 API Endpoints
+
+### Аутентификация
+
+- `POST /api/auth/google` - Аутентификация через Google OAuth
+- `GET /api/auth/google-url` - Получение URL для Google OAuth
+- `POST /api/auth/register` - Регистрация через email
+- `POST /api/auth/login` - Вход через email
+
+### Социальные функции
+
+- `GET /api/social/profile` - Получить свой профиль
+- `GET /api/social/profile/{userId}` - Получить профиль пользователя
+- `PUT /api/social/profile` - Обновить профиль
+- `GET /api/social/following` - Список подписок
+- `GET /api/social/following/{userId}` - Подписки пользователя
+- `GET /api/social/followers` - Список подписчиков
+- `GET /api/social/followers/{userId}` - Подписчики пользователя
+- `POST /api/social/follow/{userId}` - Подписаться
+- `POST /api/social/unfollow/{userId}` - Отписаться
+- `POST /api/social/like/{targetId}` - Поставить лайк
+- `POST /api/social/unlike/{targetId}` - Убрать лайк
+- `GET /api/social/search?query=...` - Поиск пользователей
+- `GET /api/social/search/history` - История поиска
+
+### Сообщения (Чат)
+
+- `POST /api/messages/send` - Отправить сообщение
+- `GET /api/messages/global` - Глобальный чат
+- `POST /api/messages/global` - Получить глобальный чат (POST для фильтрации)
+- `GET /api/messages/private/{userId}` - Приватные сообщения
+
+### Загрузка файлов
+
+- `POST /api/upload/avatar` - Загрузить аватар
+- `POST /api/upload/file` - Загрузить файл
+- `GET /api/upload/file/{fileName}` - Получить файл
+
+### Курсы
+
+- `GET /api/courses` - Список курсов
+- `GET /api/courses/{courseId}` - Детали курса
+- `GET /api/courses/{courseId}/chapters` - Главы курса
+- `GET /api/courses/{courseId}/chapters/{chapterId}/lessons` - Уроки главы
+- `GET /api/progress` - Прогресс пользователя
+- `POST /api/progress` - Сохранить прогресс
+
+### Проекты
+
+- `GET /api/projects` - Список проектов
+- `GET /api/projects/{projectId}` - Детали проекта
+- `POST /api/projects` - Создать проект (admin)
+- `PUT /api/projects/{projectId}` - Обновить проект (admin)
+- `DELETE /api/projects/{projectId}` - Удалить проект (admin)
+
+### Блог
+
+- `GET /api/blog` - Список статей
+- `GET /api/blog/{postId}` - Детали статьи
+- `POST /api/blog` - Создать статью (admin)
+- `PUT /api/blog/{postId}` - Обновить статью (admin)
+- `DELETE /api/blog/{postId}` - Удалить статью (admin)
+
+### Отзывы
+
+- `GET /api/reviews` - Список отзывов
+- `POST /api/reviews` - Создать отзыв
+- `POST /api/upload/review-photo` - Загрузить фото отзыва
+
+### Заявки
+
+- `GET /api/project-requests` - Список заявок (admin)
+- `POST /api/project-requests` - Создать заявку
+- `PUT /api/project-requests/{requestId}` - Обновить статус (admin)
+
+### Health Check
+
+- `GET /Health` - Проверка работоспособности API
+
+---
+
+## 📦 Установка и запуск
+
+### Локальная разработка
+
+#### Frontend
+
+```bash
+# Клонировать репозиторий
+git clone <repository-url>
+cd FreeDip
+
+# Установить зависимости
+npm install
+
+# Создать .env.local
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
+OPENAI_API_KEY=<your-key>
+
+# Запустить dev сервер
+npm run dev
+```
+
+Откройте [http://localhost:3000](http://localhost:3000)
+
+#### Backend (локально)
+
+```bash
+cd backend/FreeDip.Api
+
+# Восстановить зависимости
+dotnet restore
+
+# Запустить
+dotnet run
+```
+
+API будет доступен на `http://localhost:5000`
+
+### Production (VPS)
+
+#### 1. Подключиться к VPS
+
+```bash
+ssh root@213.199.56.27
+```
+
+#### 2. Перейти в директорию проекта
+
+```bash
+cd /opt/freedip-backend/backend
+```
+
+#### 3. Настроить .env
+
+```bash
+nano .env
+# Заполнить все переменные окружения
+```
+
+#### 4. Запустить Docker Compose
+
+```bash
+docker-compose up -d
+```
+
+#### 5. Проверить статус
+
+```bash
+docker-compose ps
+docker logs freedip-api
+docker logs freedip-postgres
+```
+
+#### 6. Открыть порты в firewall
+
+```bash
+ufw allow 5000/tcp
+ufw reload
+```
+
+---
+
+## 🚀 Деплой
+
+### Frontend (Vercel)
+
+```bash
+# Установить Vercel CLI
+npm i -g vercel
+
+# Логин
+vercel login
+
+# Деплой
+vercel --prod
+```
+
+**Production URL**: https://radev-test-2.vercel.app
+
+### Backend (VPS)
+
+```bash
+# На VPS
+cd /opt/freedip-backend/backend
+
+# Остановить старые контейнеры
+docker-compose down
+
+# Обновить код (через git или scp)
+git pull  # или scp файлы
+
+# Пересобрать и запустить
+docker-compose up -d --build
+
+# Проверить логи
+docker logs -f freedip-api
+```
+
+---
+
+## 🔧 Конфигурация
+
+### Google OAuth 2.0
+
+1. Перейти в [Google Cloud Console](https://console.cloud.google.com/)
+2. Создать OAuth 2.0 Client ID
+3. Добавить Authorized redirect URIs:
+   - `https://radev-test-2.vercel.app/auth/google/callback`
+   - `https://radev.digital/auth/google/callback`
+4. Скопировать Client ID и Client Secret в `.env` на VPS
+
+### Content Security Policy
+
+Настроено в `next.config.js`:
+
+```javascript
+"connect-src 'self' http://213.199.56.27:5000 https://*.firebaseio.com ..."
+```
+
+Разрешает подключения к:
+- C# API (через прокси)
+- Firebase
+- Piston API (для IDE)
+- OpenAI API
+
+---
+
+## 📊 Мониторинг
+
+### Проверка API
+
+```bash
+# Health check
+curl http://213.199.56.27:5000/Health
+
+# Проверка через прокси
+curl https://radev-test-2.vercel.app/api/backend/Health
+```
+
+### Логи
+
+```bash
+# Логи API
+docker logs freedip-api --tail 100
+
+# Логи PostgreSQL
+docker logs freedip-postgres --tail 100
+
+# Логи NGINX
+docker logs nginx-proxy --tail 100
+```
+
+### Статус контейнеров
+
+```bash
+docker ps
+docker-compose ps
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### Проблема: "Failed to fetch"
+
+**Причина**: Mixed Content (HTTPS → HTTP)  
+**Решение**: Используется Next.js API proxy (`/api/backend/*`)
+
+### Проблема: Аватарка не отображается
+
+**Причина**: Относительный URL не работает  
+**Решение**: URL преобразуется в `/api/backend/uploads/...` при загрузке
+
+### Проблема: Поиск не работает
+
+**Причина**: Пустой query или ошибка API  
+**Решение**: Проверить логи API, убедиться что query не пустой
+
+### Проблема: API недоступен
+
+**Проверить**:
+1. Firewall: `ufw status`
+2. Docker: `docker ps`
+3. Порты: `ss -tulpn | grep 5000`
+4. Логи: `docker logs freedip-api`
+
+---
+
+## 📝 Структура проекта
+
+```
+FreeDip/
+├── app/                          # Next.js App Router
+│   ├── api/                      # API Routes
+│   │   ├── backend/[...path]/    # Прокси к C# API
+│   │   ├── auth/                 # Аутентификация
+│   │   └── chat/                 # ИИ чат
+│   ├── admin/                    # Админ-панель
+│   ├── blog/                     # Блог
+│   ├── chat/                     # Глобальный чат
+│   ├── courses/                  # Курсы
+│   ├── ide/                      # IDE
+│   ├── profile/                  # Профиль
+│   ├── users/                    # Пользователи
+│   └── ...
+├── components/                    # React компоненты
+│   ├── auth/                     # Аутентификация
+│   ├── chat/                     # Чат компоненты
+│   ├── ide/                      # IDE компоненты
+│   ├── layout/                   # Хедер, футер
+│   └── ...
+├── lib/
+│   ├── api/                      # API клиент
+│   │   ├── client.ts             # Основной клиент
+│   │   ├── config.ts             # Конфигурация
+│   │   └── socialApi.ts          # Социальные функции
+│   ├── firebase/                 # Firebase конфиг
+│   └── ...
+├── public/                       # Статические файлы
+└── next.config.js                 # Next.js конфигурация
+```
+
+---
+
+## 🔒 Безопасность
+
+### Реализовано
+
+- ✅ JWT токены для аутентификации
+- ✅ Шифрование сообщений в чате
+- ✅ Проверка файлов на вирусы перед загрузкой
+- ✅ Content Security Policy (CSP)
+- ✅ CORS настройки
+- ✅ Валидация данных на сервере
+- ✅ Защита от SQL injection (EF Core)
+- ✅ Rate limiting (в планах)
+
+### Рекомендации
+
+- Настроить HTTPS для VPS (Let's Encrypt)
+- Добавить rate limiting
+- Настроить мониторинг и алерты
+- Регулярные бэкапы БД
+
+---
+
+## 📞 Контакты и поддержка
+
+- **Сайт**: https://radev.digital
+- **Тестовый домен**: https://radev-test-2.vercel.app
+- **VPS**: 213.199.56.27
+
+---
+
+## 📄 Лицензия
+
+© 2024 FreeDip / R&A-Dev. Все права защищены.
+
+---
+
+## 🎯 Roadmap
+
+### Планируется
+
+- [ ] HTTPS для VPS API
+- [ ] Rate limiting
+- [ ] WebSocket для real-time чата
+- [ ] Push-уведомления
+- [ ] Мобильное приложение
+- [ ] Видео-уроки в курсах
+- [ ] Система сертификатов
+- [ ] Интеграция с GitHub для проектов
+
+---
+
+**Последнее обновление**: Декабрь 2024

@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /login
+
+Sitemap: https://freedip-portfolio.vercel.app/sitemap.xml
+
+
+
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /login
+
+Sitemap: https://freedip-portfolio.vercel.app/sitemap.xml
+
+
+
+
+
+
+
+
+
