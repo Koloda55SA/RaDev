@@ -4,15 +4,29 @@ import { SYSTEM_PROMPT } from '@/lib/ai/prompt'
 export const dynamic = 'force-dynamic'
 
 export async function POST(request: NextRequest) {
+  // В Next.js 14 body можно прочитать только один раз
+  // Используем более надежный способ - читаем как текст, затем парсим
+  let requestBody: any
+  
   try {
-    // Читаем body один раз - в Next.js 14 body можно прочитать только один раз
-    let requestBody: any
-    try {
-      requestBody = await request.json()
-    } catch (parseError) {
-      console.error('Error parsing request body:', parseError)
+    // Сначала проверяем, доступен ли body
+    if (!request.body) {
       return NextResponse.json(
-        { error: 'Invalid request body' },
+        { error: 'Request body is required' },
+        { status: 400 }
+      )
+    }
+
+    // Читаем body как текст один раз
+    const bodyText = await request.text()
+    
+    // Парсим JSON из текста
+    try {
+      requestBody = JSON.parse(bodyText)
+    } catch (parseError) {
+      console.error('Error parsing JSON:', parseError)
+      return NextResponse.json(
+        { error: 'Invalid JSON in request body' },
         { status: 400 }
       )
     }
