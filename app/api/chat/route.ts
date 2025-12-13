@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { SYSTEM_PROMPT } from '@/lib/ai/prompt'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: NextRequest) {
+  let requestBody: any
+  
   try {
-    const { message, conversationHistory } = await request.json()
+    // Читаем body один раз и сохраняем
+    requestBody = await request.json()
+    const { message, conversationHistory } = requestBody
 
     if (!message || typeof message !== 'string') {
       return NextResponse.json(
