@@ -85,3 +85,4 @@ echo "2. Запустите: docker-compose up -d"
 echo "3. Проверьте логи: docker-compose logs -f"
 
 
+
