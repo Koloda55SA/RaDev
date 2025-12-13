@@ -6,12 +6,22 @@ import I18nProvider from "@/components/providers/I18nProvider"
 import QueryProvider from "@/components/providers/QueryProvider"
 import { HybridAuthProvider } from "@/components/auth/HybridAuthProvider"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
-import ChatBot from "@/components/ai/ChatBot"
 import ScrollToTop from "@/components/shared/ScrollToTop"
-import LoadingScreen from "@/components/shared/LoadingScreen"
 import { Toaster } from "react-hot-toast"
 import { metadata } from "./metadata"
 import Script from "next/script"
+import dynamic from "next/dynamic"
+
+// Lazy load LoadingScreen (использует framer-motion)
+const LoadingScreen = dynamic(() => import("@/components/shared/LoadingScreen"), {
+  ssr: false,
+})
+
+// Lazy load тяжелых компонентов
+const ChatBot = dynamic(() => import("@/components/ai/ChatBot"), {
+  ssr: false,
+  loading: () => null,
+})
 
 export { metadata }
 
@@ -25,7 +35,15 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link 
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          as="style"
+          onLoad="this.onload=null;this.rel='stylesheet'"
+        />
+        <noscript>
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        </noscript>
         <link rel="icon" href="/logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/logo.png" />
         <link rel="manifest" href="/manifest.json?v=5.0.0" />
@@ -101,7 +119,7 @@ export default function RootLayout({
                       .catch(function(err) {
                         console.error('[SW] Registration failed:', err)
                       })
-                  }, 5000) // Ждем 5 секунд после загрузки страницы (не блокируем)
+                  }, 1000) // Ждем 1 секунду после загрузки страницы (не блокируем)
                 }
                 
                 // Очищаем старые кэши только один раз, не при каждой загрузке

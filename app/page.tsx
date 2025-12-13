@@ -6,10 +6,20 @@ import { Button } from '@/components/ui/button'
 import { ArrowRight, BookOpen, Code, Users, Award, Zap } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
-import LaunchTimer from '@/components/shared/LaunchTimer'
-import ParticleBackground from '@/components/shared/ParticleBackground'
+import dynamic from 'next/dynamic'
 import StatsSection from '@/components/shared/StatsSection'
 import OrderProjectModal from '@/components/shared/OrderProjectModal'
+
+// Lazy load тяжелых компонентов
+const LaunchTimer = dynamic(() => import('@/components/shared/LaunchTimer'), {
+  ssr: false,
+  loading: () => <div className="h-16" />,
+})
+
+const ParticleBackground = dynamic(() => import('@/components/shared/ParticleBackground'), {
+  ssr: false,
+  loading: () => null,
+})
 
 export default function HomePage() {
   const { t } = useTranslation()
