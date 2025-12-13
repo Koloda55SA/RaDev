@@ -24,7 +24,6 @@ const nextConfig = {
 
   // Экспериментальные оптимизации
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: [
       'lucide-react',
       '@radix-ui/react-dialog',
