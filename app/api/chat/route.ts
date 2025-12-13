@@ -4,11 +4,19 @@ import { SYSTEM_PROMPT } from '@/lib/ai/prompt'
 export const dynamic = 'force-dynamic'
 
 export async function POST(request: NextRequest) {
-  let requestBody: any
-  
   try {
-    // Читаем body один раз и сохраняем
-    requestBody = await request.json()
+    // Читаем body один раз - в Next.js 14 body можно прочитать только один раз
+    let requestBody: any
+    try {
+      requestBody = await request.json()
+    } catch (parseError) {
+      console.error('Error parsing request body:', parseError)
+      return NextResponse.json(
+        { error: 'Invalid request body' },
+        { status: 400 }
+      )
+    }
+    
     const { message, conversationHistory } = requestBody
 
     if (!message || typeof message !== 'string') {
@@ -72,10 +80,20 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       message: aiMessage,
     })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Chat API error:', error)
+    
+    // Проверяем, не связана ли ошибка с чтением body
+    if (error.message?.includes('Body has already been read') || error.message?.includes('Body is unusable')) {
+      console.error('Body read error - возможно body был прочитан дважды')
+      return NextResponse.json(
+        { error: 'Request body processing error' },
+        { status: 400 }
+      )
+    }
+    
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: error.message || 'Internal server error' },
       { status: 500 }
     )
   }
