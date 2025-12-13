@@ -110,17 +110,16 @@ async function handleRequest(
       headers['Authorization'] = authHeader
     }
     
-    const contentType = request.headers.get('content-type')
-    if (contentType) {
-      headers['Content-Type'] = contentType
+    const requestContentType = request.headers.get('content-type')
+    if (requestContentType && !requestContentType.includes('multipart/form-data')) {
+      headers['Content-Type'] = requestContentType
     }
     
     // Получаем body для POST/PUT/PATCH
     let body: string | FormData | undefined
     if (['POST', 'PUT', 'PATCH'].includes(method)) {
       try {
-        const contentType = request.headers.get('content-type')
-        if (contentType?.includes('multipart/form-data')) {
+        if (requestContentType?.includes('multipart/form-data')) {
           body = await request.formData()
         } else {
           body = await request.text()
